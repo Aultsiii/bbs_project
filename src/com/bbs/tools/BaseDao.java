@@ -13,7 +13,7 @@ public class BaseDao {
 	}
 	private static String URL = "jdbc:mysql://localhost:3306/bbs_system?useUnicode=true&characterEncoding=UTF-8";
 	private static String USER = "root";// 数据库账户
-	private static String PASSWORD = "123";// 数据库密码
+	private static String PASSWORD = "187412";// 数据库密码
 	/**
 	 * 获取数据库连接
 	 * @return
@@ -71,6 +71,16 @@ public class BaseDao {
 		    }
 		    return ps.executeQuery();
 	}
+	 
+	 public static int alter(PreparedStatement ps,Object[] args, Object[] objects) 
+				throws SQLException{
+			if(args != null) {
+				for(int i=0;i<args.length;i++) {
+					ps.setObject(i+1, args[i]);
+				}
+			}
+			return ps.executeUpdate();
+		}
 }
 
 
